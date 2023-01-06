@@ -60,7 +60,15 @@ function NoteForm() {
     }
 
     // Actual saving
-    localStorage.setItem("notes", JSON.stringify(formData));
+    const existingData = localStorage.getItem("notes");
+    if (!existingData) {
+      const payload = [{ ...formData }];
+      localStorage.setItem("notes", JSON.stringify(payload));
+    } else {
+      const currentData = JSON.parse(existingData);
+      const payload = [{ ...formData }, ...currentData];
+      localStorage.setItem("notes", JSON.stringify(payload));
+    }
 
     // Cleanup form
     setFormData({ ...INITIAL_STATES.formData });

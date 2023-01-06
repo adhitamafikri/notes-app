@@ -1,8 +1,17 @@
-import "./App.css";
+import React, { useMemo } from "react";
 import NoteCard from "./components/NoteCard";
 import NoteForm from "./components/NoteForm";
+import "./App.css";
 
 function App() {
+  const notes = useMemo(() => {
+    const result = localStorage.getItem("notes");
+    if (!!result) {
+      return JSON.parse(result);
+    }
+    return [];
+  }, []);
+
   return (
     <div className="App">
       <NoteForm />
