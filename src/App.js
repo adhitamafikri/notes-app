@@ -1,23 +1,13 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import NoteCard from "./components/NoteCard";
+import NoteForm from "./components/NoteForm";
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <NoteForm />
+      <NoteCard title="Example" body="This is body of note" color="beige" />
+      <NoteCard title={24} body="Body ke dua" color="beige" />
     </div>
   );
 }
